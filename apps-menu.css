@@ -42,6 +42,10 @@ body {
 
 }
 
+.nav-links:hover {
+    cursor: pointer;
+}
+
 #soon {
     font: 0.5em Helvetica;
     font-weight: lighter;
