@@ -49,7 +49,24 @@ button {
     padding: 0px 5px;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
     background-color: #7cc453;
     cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 0;
+    padding: 0;
+}
+
+li {
+    margin-top: 5px;
+    margin-left: 0;
+}
+
+a {
+    color: #5f9341;
 }

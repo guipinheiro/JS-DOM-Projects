@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="index.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chrome Extension</title>
+        <link rel="stylesheet" href="index.css" />
     </head>
     <body>
         <div id="extension-container">
-            <input type="text" name="user-input" id="input-el">
+            <!-- todo: include the rest of buttons functionallity, but use event listeners in JS instead onclick html tags-->
+            <input type="text" name="user-input" id="input-el" />
             <button name="input-btn" id="input-btn">Save input</button>
             <button name="second-btn" id="second-btn">btn2</button>
             <button name="third-btn" id="third-btn">btn3</button>
         </div>
-
+        <ul id="ul-el"></ul>
         <script src="index.js"></script>
     </body>
 </html>
