@@ -1,7 +1,13 @@
+:root {
+    --main-color: #5f9341;
+    --select-color: #7cc453;
+}
+
 body {
     margin: 0;
     padding: 10px;
     font-family: Helvetica, sans-serif;
+    min-width: 400px;
 }
 
 #extension-container {
@@ -33,7 +39,7 @@ body {
 }
 
 input {
-    border: 1px solid #5f9341;
+    border: 1px solid var(--main-color);
     padding: 0px 5px;
     font-weight: 600;
     font-size: 0.9rem;
@@ -41,7 +47,7 @@ input {
 
 button {
     text-transform: uppercase;
-    background-color: #5f9341;
+    background-color: var(--main-color);
     color: white;
     font-size: 1rem;
     font-weight: bolder;
@@ -51,7 +57,7 @@ button {
 
 button:hover,
 button:focus {
-    background-color: #7cc453;
+    background-color: var(--select-color);
     cursor: pointer;
 }
 
@@ -68,5 +74,5 @@ li {
 }
 
 a {
-    color: #5f9341;
+    color: var(--main-color);
 }
