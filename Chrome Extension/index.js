@@ -1,5 +1,6 @@
 const inputBtn = document.querySelector("#input-btn");
 const inputEl = document.querySelector("#input-el");
+const clearBtn = document.querySelector("#clear-btn");
 const ulEl = document.querySelector("#ul-el");
 
 let myLeads = [];
@@ -8,8 +9,10 @@ let myLeads = [];
 ulEl.innerHTML = "";
 inputEl.value = "";
 
+let localLeads = localStorage.getItem("myLeads");
+
 //Increase the list of leads with user inputs
-const renderLeads = (userInput) => {
+const render = (userInput) => {
     let newItem = document.createElement("li");
     let newLink = document.createElement("a");
     newLink.innerHTML = userInput;
@@ -21,17 +24,18 @@ const renderLeads = (userInput) => {
 
 // Renders local inputs saved in previous sessions
 const renderLocal = () => {
-    myLeads = JSON.parse(localStorage.getItem("myLeads"));
-    myLeads.forEach((element) => {
-        renderLeads(element);
+    let leads = JSON.parse(localLeads);
+    leads.forEach((element) => {
+        render(element);
     });
+    return leads;
 };
 
-if (localStorage.getItem("myLeads") != null) {
-    renderLocal(); //If any local storage already has inputs, display them when reloading the page
+//If any local storage already has inputs, display them when reloading the page
+if (localLeads) {
+    myLeads = renderLocal();
 }
 
-//Using event listener instead of html onclick atribute
 //Adds user text to a list
 inputBtn.addEventListener("click", () => {
     if (inputEl.value != "") {
@@ -43,6 +47,17 @@ inputBtn.addEventListener("click", () => {
         //Sets in local storage new inputs
         localStorage.setItem("myLeads", JSON.stringify(myLeads));
 
-        renderLeads(userInput);
+        render(userInput);
+    }
+});
+
+//Clear localStorage history and list of leads
+clearBtn.addEventListener("click", () => {
+    const result = window.confirm("Are you sure you want to clear your leads?");
+
+    if (result) {
+        localStorage.removeItem("myLeads");
+        ulEl.innerHTML = "";
+        myLeads = [];
     }
 });

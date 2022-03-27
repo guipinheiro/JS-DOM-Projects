@@ -1,6 +1,9 @@
 :root {
-    --main-color: #5f9341;
-    --select-color: #7cc453;
+    --main-clr: #5f9341;
+    --select-clr: #94c973;
+    --clear-clr: #de5e30;
+    --clear-select-clr: #8e1500;
+    --neutral-color: whitesmoke;
 }
 
 body {
@@ -23,42 +26,64 @@ body {
     grid-row: 1/2;
 }
 
-#save-btn {
-    grid-column: 1/2;
-    grid-row: 2/3;
-}
-
-#second-btn {
-    grid-column: 2/3;
-    grid-row: 2/3;
-}
-
-#third-btn {
-    grid-column: 3/4;
-    grid-row: 2/3;
-}
-
-input {
-    border: 1px solid var(--main-color);
-    padding: 0px 5px;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
 button {
     text-transform: uppercase;
-    background-color: var(--main-color);
+    background-color: var(--main-clr);
     color: white;
     font-size: 1rem;
     font-weight: bolder;
-    border: 0;
+    border: 1px solid var(--main-clr);
     padding: 0px 5px;
 }
 
 button:hover,
 button:focus {
-    background-color: var(--select-color);
+    animation: selecting 300ms forwards;
     cursor: pointer;
+}
+
+@keyframes selecting {
+    to {
+        background-color: var(--select-clr);
+        border: 1px solid var(--select-clr);
+    }
+}
+
+#save-btn {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#clear-btn {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: var(--neutral-color);
+    border: 1px solid var(--clear-clr);
+    color: var(--clear-clr);
+}
+
+#clear-btn:hover,
+#clear-btn:focus {
+    animation: selecting-clear 150ms forwards;
+    /* animation-duration: 500ms; */
+}
+
+@keyframes selecting-clear {
+    to {
+        border: 3px solid var(--clear-clr);
+    }
+}
+
+#third-btn {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+input {
+    border: 1px solid var(--main-clr);
+    padding: 0px 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 ul {
@@ -74,5 +99,5 @@ li {
 }
 
 a {
-    color: var(--main-color);
+    color: var(--main-clr);
 }
