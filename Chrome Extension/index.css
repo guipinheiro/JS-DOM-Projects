@@ -49,7 +49,7 @@ button:focus {
     }
 }
 
-#save-btn {
+#input-btn {
     grid-column: 1/2;
     grid-row: 2/3;
 }
@@ -74,7 +74,7 @@ button:focus {
     }
 }
 
-#third-btn {
+#save-btn {
     grid-column: 2/3;
     grid-row: 2/3;
 }
