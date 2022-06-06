@@ -1,0 +1,63 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+blockquote,
+body,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+ol,
+p,
+ul,
+a {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 200px 20px 80px;
+	grid-template-areas: "grid space mini-grid";
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(10, 20px);
+	grid-template-rows: repeat(20, 20px);
+	grid-area: grid;
+	align-self: start;
+	border-left: 1px solid gray;
+	border-top: 1px solid gray;
+	border-right: 1px solid gray;
+}
+
+.grid div {
+	border: 1px solid gray;
+}
+
+.tetromino {
+	background-color: aqua;
+}
+
+.mini-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 20px);
+	grid-template-rows: repeat(4, 20px);
+	position: relative;
+	border: 1px solid gray;
+	grid-area: mini-grid;
+	align-self: start;
+}
+
+.mini-grid div {
+	border: 1px solid gray;
+}
+
