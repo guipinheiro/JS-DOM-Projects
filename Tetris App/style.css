@@ -22,6 +22,30 @@ a {
 	line-height: 1;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #eae7ed;
+}
+
+#game-title {
+	margin: 20px 0px;
+	text-transform: uppercase;
+	color: #3532a7;
+}
+
+#score-title {
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+#start-btn {
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: 200px 20px 80px;
