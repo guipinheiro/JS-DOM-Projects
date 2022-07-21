@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		undraw();
 		currentPosition += width;
 		draw();
-		freeze();
+		setTimeout(freeze, "300");
 	}
 
 	//Freeze function so it stops moving when reaching the bottom
