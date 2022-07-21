@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		undraw();
 		currentPosition += width;
 		draw();
-		freeze();
+		setTimeout(freeze, "300");
 	}
 
 	//Freeze function so it stops moving when reaching the bottom
@@ -157,6 +157,34 @@ document.addEventListener("DOMContentLoaded", () => {
 		draw();
 	}
 
+	//Fixing rotation at the edges (which overflowed to the other side of the grid)
+	function isAtRight() {
+		return current.some((index) => (currentPosition + index + 1) % width === 0);
+	}
+
+	function isAtLeft() {
+		return current.some((index) => (currentPosition + index) % width === 0);
+	}
+
+	function checkRotatedPosition(P) {
+		//get current position.  Then, check if the piece is near the left side.
+		P = P || currentPosition;
+
+		//add 1 because the position index can be 1 less than where the piece is (with how they are indexed).
+		if ((P + 1) % width < 4) {
+			//use actual position to check if it's flipped over to right side
+			if (isAtRight()) {
+				currentPosition += 1; //if so, add one to wrap it back around
+				checkRotatedPosition(P); //check again.  Pass position from start, since long block might need to move more.
+			}
+		} else if (P % width > 5) {
+			if (isAtLeft()) {
+				currentPosition -= 1;
+				checkRotatedPosition(P);
+			}
+		}
+	}
+
 	//Rotate the tetromino
 	function rotate() {
 		undraw();
@@ -167,8 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			currentRotation = 0;
 		}
 
-		//! Here we have a bug, if we rotate a shape in the corner, the rotation might makes it go to the other side of the grid
 		current = theTetrominoes[random][currentRotation];
+		checkRotatedPosition();
 		draw();
 	}
 
@@ -213,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	//Add score
+	//! Bug: When scoring multiple lines, there will be some squares on the top that will be fulfilled with the last tetromino used to score
 	function addScore() {
 		const takenRow = width + 1;
 		for (let i = 0; i < squares.length - takenRow; i += width) {
